@@ -1,0 +1,14 @@
+{
+  "100Entrance": 0,
+  "Cafe": 1,
+  "Courtyard": 2,
+  "FirstAidRoom": 3,
+  "FountainArea": 4,
+  "LostAndFound": 5,
+  "Mosque": 6,
+  "PattiArea": 7,
+  "ReceptionBackside": 8,
+  "SSC": 9,
+  "helmetarea": 10,
+  "stairs": 11
+}
