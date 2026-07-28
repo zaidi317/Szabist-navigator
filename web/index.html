@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Vision Navigator</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .action-area { padding: 24px 20px 32px; }
+    .zabgpt-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: var(--color-navy);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: var(--radius);
+      border: 2px dashed var(--color-navy);
+      cursor: pointer;
+      background: none;
+      width: 100%;
+    }
+    .zabgpt-link:active { opacity: 0.7; }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <!-- Header -->
+    <header class="header-navy">
+      <div>
+        <h1>Vision Navigator</h1>
+        <p>SZABIST 100 Campus, Karachi</p>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <div class="content">
+      <div class="hero">
+        <div class="hero-logo">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10
+                     10-4.48 10-10S17.52 2 12 2zm0 18c-4.41
+                     0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59
+                     8-8 8zm-1-13l-4 9 9-4-5-5z"/>
+          </svg>
+        </div>
+        <h2>Find your way around campus</h2>
+        <p>Point your camera at your surroundings &#8212; Vision Navigator identifies where you are and guides you to your destination.</p>
+      </div>
+
+      <div class="action-area">
+        <a class="btn btn-primary" href="destination.html">Start Navigation</a>
+        <a class="btn btn-ghost" href="destination.html">Browse Locations</a>
+        <button class="zabgpt-link" id="zabgpt-open-btn">
+          &#128172; Ask Zabi (ZabGPT) &#8250;
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZabGPT FAB -->
+  <button class="zabgpt-fab" id="zabgpt-fab" title="Ask ZabGPT">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  </button>
+
+  <!-- ZabGPT chat panel -->
+  <div class="zabgpt-panel" id="zabgpt-panel">
+    <div class="zabgpt-header">
+      <span class="zabgpt-title">ZabGPT</span>
+      <span class="zabgpt-sub">Ask anything about SZABIST</span>
+      <button class="zabgpt-close" id="zabgpt-close">&#10005;</button>
+    </div>
+    <div class="zabgpt-messages" id="zabgpt-messages"></div>
+    <div class="zabgpt-input-row">
+      <input class="zabgpt-input" id="zabgpt-input" type="text"
+             placeholder="e.g. What are the fee structures?" autocomplete="off" />
+      <button class="zabgpt-send" id="zabgpt-send">Send</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/zabgpt-chat.js"></script>
+  <script type="module">
+    // Also wire the inline "Ask Zabi" button to open the panel
+    document.getElementById("zabgpt-open-btn").addEventListener("click", () => {
+      document.getElementById("zabgpt-panel").classList.add("open");
+      document.getElementById("zabgpt-input").focus();
+    });
+  </script>
+</body>
+</html>

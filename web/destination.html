@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Choose Destination — Vision Navigator</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-muted);
+      margin-bottom: 12px;
+    }
+    .footer-bar {
+      padding: 16px 20px;
+      border-top: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <header class="header-navy">
+      <button class="btn-back" onclick="history.back()">‹</button>
+      <h1>Where to?</h1>
+    </header>
+
+    <div class="content">
+      <div id="banner" class="banner"></div>
+      <p class="section-title">Select a destination</p>
+      <ul id="dest-list" class="dest-list">
+        <!-- populated by main-home.js -->
+        <li style="color:var(--color-muted);padding:12px 0">Loading locations…</li>
+      </ul>
+    </div>
+
+    <div class="footer-bar">
+      <button id="btn-start" class="btn btn-primary" disabled>Navigate</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/main-home.js"></script>
+</body>
+</html>

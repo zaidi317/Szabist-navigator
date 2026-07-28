@@ -1,0 +1,496 @@
+/* Vision Navigator — shared styles */
+
+:root {
+  --color-navy:   #1E2A4A;
+  --color-coral:  #FF6B4A;
+  --color-bg:     #FFFFFF;
+  --color-body:   #2A2A2A;
+  --color-muted:  #6B7280;
+  --color-border: #E5E7EB;
+  --color-success:#22C55E;
+  --color-error:  #EF4444;
+
+  --radius:    12px;
+  --radius-sm:  8px;
+  --font:      -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --shadow:    0 2px 12px rgba(0,0,0,0.10);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: var(--font);
+  background: var(--color-bg);
+  color: var(--color-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── header strips ─────────────────────────────────────────────────────── */
+
+.header-navy {
+  background: var(--color-navy);
+  color: #fff;
+  padding: 20px 24px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-coral {
+  background: var(--color-coral);
+  color: #fff;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-navy h1, .header-coral h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.header-navy p {
+  font-size: 0.8rem;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+/* ── back button ───────────────────────────────────────────────────────── */
+
+.btn-back {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+/* ── screen container ──────────────────────────────────────────────────── */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* ── home hero ─────────────────────────────────────────────────────────── */
+
+.hero {
+  text-align: center;
+  padding: 40px 20px 24px;
+}
+
+.hero-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-navy);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.hero-logo svg { width: 40px; height: 40px; fill: #fff; }
+
+.hero h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.hero p {
+  color: var(--color-muted);
+  margin-top: 6px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* ── buttons ───────────────────────────────────────────────────────────── */
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--color-coral);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: var(--color-navy);
+  color: #fff;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-navy);
+  border: 2px solid var(--color-navy);
+}
+
+.btn + .btn { margin-top: 12px; }
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── destination list ──────────────────────────────────────────────────── */
+
+.dest-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dest-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  background: var(--color-bg);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.dest-item:hover, .dest-item.selected {
+  border-color: var(--color-coral);
+  background: #fff5f3;
+}
+
+.dest-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.dest-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.dest-floor {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  margin-top: 2px;
+}
+
+/* ── status banner ─────────────────────────────────────────────────────── */
+
+.banner {
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+  display: none;
+}
+
+.banner.show { display: block; }
+.banner.error   { background: #FEE2E2; color: #991B1B; }
+.banner.success { background: #DCFCE7; color: #166534; }
+.banner.info    { background: #EFF6FF; color: #1E40AF; }
+
+/* ── loading spinner ───────────────────────────────────────────────────── */
+
+.spinner {
+  width: 24px; height: 24px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-coral);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── AR screen layout ──────────────────────────────────────────────────── */
+
+.ar-container {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background: #000;
+}
+
+#ar-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#ar-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#minimap-canvas {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  background: rgba(255,255,255,0.92);
+}
+
+.ar-tap-prompt {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 1.05rem;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.ar-tap-prompt .tap-icon { font-size: 2.5rem; }
+
+/* destination badge on AR header */
+.dest-badge {
+  font-size: 0.78rem;
+  background: rgba(255,255,255,0.25);
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: auto;
+}
+
+/* arrived overlay */
+.arrived-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(34,197,94,0.88);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  gap: 12px;
+}
+
+.arrived-overlay.show { display: flex; }
+.arrived-icon { font-size: 3.5rem; }
+.arrived-overlay h2 { font-size: 1.6rem; font-weight: 700; }
+.arrived-overlay p  { font-size: 0.95rem; opacity: 0.9; }
+
+/* ── ZabGPT floating button + panel ────────────────────────────────────── */
+
+.zabgpt-fab {
+  position: fixed;
+  bottom: 24px;
+  left: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-navy);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.40);
+  z-index: 1000;
+  transition: transform 0.15s;
+}
+.zabgpt-fab:active { transform: scale(0.92); }
+.zabgpt-fab svg { width: 26px; height: 26px; }
+
+.zabgpt-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: var(--radius) var(--radius) 0 0;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.25);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  max-height: 65vh;
+  transform: translateY(100%);
+  transition: transform 0.28s cubic-bezier(0.32,0.72,0,1);
+}
+.zabgpt-panel.open { transform: translateY(0); }
+
+.zabgpt-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+.zabgpt-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-navy);
+}
+.zabgpt-sub {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  flex: 1;
+}
+.zabgpt-close {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--color-muted);
+  padding: 2px 4px;
+}
+
+.zabgpt-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.zabgpt-msg {
+  max-width: 88%;
+  padding: 10px 13px;
+  border-radius: 14px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+.zabgpt-msg.user {
+  background: var(--color-coral);
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+.zabgpt-msg.bot {
+  background: #F3F4F6;
+  color: var(--color-body);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+.zabgpt-msg.loading {
+  background: #F3F4F6;
+  color: var(--color-muted);
+  align-self: flex-start;
+  font-style: italic;
+}
+
+.zabgpt-input-row {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px 16px;
+  border-top: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+.zabgpt-input {
+  flex: 1;
+  padding: 10px 13px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  outline: none;
+  font-family: var(--font);
+}
+.zabgpt-input:focus { border-color: var(--color-coral); }
+.zabgpt-send {
+  background: var(--color-coral);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.zabgpt-send:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── calibration screen ────────────────────────────────────────────────── */
+
+.calibrate-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.calibrate-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.calibrate-ring svg {
+  transform: rotate(-90deg);
+}
+
+.ring-bg   { fill: none; stroke: var(--color-border); stroke-width: 8; }
+.ring-fill { fill: none; stroke: var(--color-coral);  stroke-width: 8;
+             stroke-linecap: round; transition: stroke-dashoffset 0.3s; }
+
+.ring-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-coral);
+}
+
+.calibrate-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.calibrate-hint {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 260px;
+}

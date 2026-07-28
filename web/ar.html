@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>AR Navigation — Vision Navigator</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="screen">
+    <!-- Coral AR header -->
+    <header class="header-coral" id="ar-header">
+      <button class="btn-back" onclick="history.back()">&#8249;</button>
+      <h1>Navigating</h1>
+      <span class="dest-badge" id="dest-badge">&#8212;</span>
+    </header>
+
+    <!-- Error / info banner -->
+    <div id="banner" class="banner" style="margin:8px 12px 0;border-radius:var(--radius-sm)"></div>
+
+    <!-- AR viewport -->
+    <div class="ar-container">
+      <!-- Live camera feed -->
+      <video id="ar-video" autoplay playsinline muted></video>
+
+      <!-- AR arrow overlay -->
+      <canvas id="ar-canvas"></canvas>
+
+      <!-- Mini-map (always visible) -->
+      <canvas id="minimap-canvas" width="180" height="180"></canvas>
+
+      <!-- Tap-to-start prompt (shown before camera is active) -->
+      <div class="ar-tap-prompt" id="tap-prompt">
+        <span class="tap-icon">&#128070;</span>
+        <span>Tap to start AR camera</span>
+      </div>
+
+      <!-- Arrived overlay -->
+      <div class="arrived-overlay" id="arrived-overlay">
+        <span class="arrived-icon">&#127881;</span>
+        <h2>You have arrived!</h2>
+        <p id="arrived-label"></p>
+        <button class="btn btn-secondary" style="max-width:220px;margin-top:8px"
+                onclick="window.location.href='destination.html'">
+          New destination
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZabGPT FAB — fixed, outside ar-container so overflow:hidden can't clip it -->
+  <button class="zabgpt-fab" id="zabgpt-fab" title="Ask ZabGPT">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  </button>
+
+  <!-- ZabGPT chat panel — fixed, slides up from bottom -->
+  <div class="zabgpt-panel" id="zabgpt-panel">
+    <div class="zabgpt-header">
+      <span class="zabgpt-title">ZabGPT</span>
+      <span class="zabgpt-sub">Ask anything about SZABIST</span>
+      <button class="zabgpt-close" id="zabgpt-close">&#10005;</button>
+    </div>
+    <div class="zabgpt-messages" id="zabgpt-messages"></div>
+    <div class="zabgpt-input-row">
+      <input class="zabgpt-input" id="zabgpt-input" type="text"
+             placeholder="e.g. What are the fee structures?" autocomplete="off" />
+      <button class="zabgpt-send" id="zabgpt-send">Send</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/main-ar.js"></script>
+  <script type="module" src="js/zabgpt-chat.js"></script>
+</body>
+</html>

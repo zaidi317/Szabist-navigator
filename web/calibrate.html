@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Calibrating — Vision Navigator</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="screen">
+    <header class="header-coral">
+      <button class="btn-back" onclick="history.back()">‹</button>
+      <h1>Calibrate</h1>
+    </header>
+
+    <div class="content">
+      <div id="banner" class="banner"></div>
+
+      <!-- Camera preview (hidden, used for frame capture) -->
+      <video id="cal-video" autoplay playsinline muted
+             style="width:100%;border-radius:var(--radius);background:#000;aspect-ratio:16/9;object-fit:cover;display:none"></video>
+
+      <div class="calibrate-container">
+        <!-- Progress ring -->
+        <div class="calibrate-ring">
+          <svg width="120" height="120" viewBox="0 0 120 120">
+            <circle class="ring-bg"   cx="60" cy="60" r="52"/>
+            <circle class="ring-fill" id="ring-fill" cx="60" cy="60" r="52"
+                    stroke-dasharray="326.73" stroke-dashoffset="326.73"/>
+          </svg>
+          <div class="ring-label" id="ring-label">0%</div>
+        </div>
+
+        <div>
+          <p class="calibrate-title" id="cal-title">Tap to start calibration</p>
+          <p class="calibrate-hint" id="cal-hint">
+            Slowly pan your camera around you so we can recognise your location and lock your heading.
+          </p>
+        </div>
+
+        <button id="btn-cal" class="btn btn-primary" style="max-width:280px">
+          Start Calibration
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/calibrate.js"></script>
+</body>
+</html>

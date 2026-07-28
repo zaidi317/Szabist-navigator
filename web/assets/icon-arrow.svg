@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Upward navigation arrow used by ar-overlay.js via canvas drawImage -->
+  <circle cx="32" cy="32" r="30" fill="#FF6B4A" opacity="0.92"/>
+  <path d="M32 14 L44 42 L32 36 L20 42 Z" fill="#ffffff"/>
+</svg>
